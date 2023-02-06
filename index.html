@@ -1,0 +1,753 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <link href="images/favicon-7deef22f.png" rel="icon" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Kittn API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-d5e7f32e.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;nodejs&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+    <div class="center">
+      <img src="images/logo-9edbd576.svg" class="logo" alt="" />
+    </div>
+        <div class="lang-selector">
+              <a href="#" data-language-name="nodejs">nodejs</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#screen" class="toc-h1 toc-link" data-title="Screen">Screen</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-screen-list" class="toc-h2 toc-link" data-title="Get screen list">Get screen list</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-screen" class="toc-h2 toc-link" data-title="Get a Specific Screen">Get a Specific Screen</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#media" class="toc-h1 toc-link" data-title="Media">Media</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-media-list" class="toc-h2 toc-link" data-title="Get media list">Get media list</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#compsition" class="toc-h1 toc-link" data-title="Compsition">Compsition</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-coposition-list" class="toc-h2 toc-link" data-title="Get coposition list">Get coposition list</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='#'><a href='https://console.pickcel.com/'>Login</a> for Access key</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+
+<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+
+<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+
+<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+</blockquote>
+
+<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+
+<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: meowmeowmeow</code></p>
+
+<aside class="notice">
+You must replace <code>meowmeowmeow</code> with your personal API key.
+</aside>
+<h1 id='screen'>Screen</h1><h2 id='get-screen-list'>Get screen list</h2>
+<blockquote>
+<p>The api returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully fetched documents"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"screens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"611133185ca535334c620703"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Karnataka"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"full_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"google_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout, Bengaluru, Karnataka, India"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"geocode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9121181</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.6445548</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pi_V4_2GB_Pickcel"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_sync_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-18T07:58:11.293Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60c99ebea95bf0724ba4abb2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-16T06:48:30.727Z"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abhishek Ramesh"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abhishek.ramesh72"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abhishek.ramesh@pickcel.com"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-09T13:52:24.053Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-09T13:52:24.053Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_online"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000a93fd0db"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"profile_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"611e38a215047d0509632a5c"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Karnataka"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"full_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"google_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout, Bengaluru, Karnataka, India"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"geocode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9121181</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.6445548</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Display - eJ8y8t"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_sync_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19T12:30:28.566Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57b598e787895d651b5477cd"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-18T11:15:51.604Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact@pickcel.com"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19T10:55:30.338Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19T10:55:30.338Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_online"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ba7e8ce0c1a1356d"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8570</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all screen.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://signage.pickcel.com/api/v4/client/screens/list?page=0&amp;limit=2&amp;sort_by=first_name&amp;order=asc</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>page number, start with 0 being first page</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>N.A.</td>
+<td>number of results returned per page, value should be greater than 1 and less than 30</td>
+</tr>
+<tr>
+<td>sort_by</td>
+<td>N.A.</td>
+<td>defines the field which needs to be sorted by</td>
+</tr>
+<tr>
+<td>order</td>
+<td>dsc</td>
+<td>defines how sorting has to be done, values can be either asc [ascending] or dsc [descending]. If not passed descending will be default</td>
+</tr>
+<tr>
+<td>screen_status</td>
+<td>all</td>
+<td>online, offline, deactivated, when the field is not passed, the results would have all data without any filter</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
+  Remember — a happy kitten is an authenticated kitten!
+</aside> -->
+<h2 id='get-a-specific-screen'>Get a Specific Screen</h2>
+<blockquote>
+<p>The api returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"screen"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d49760fabba1126b568cd8c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"full_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"google_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout, Bengaluru, Karnataka, India"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"geocode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9121181</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.6445548</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"hardware_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"hardware"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_storage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_ram"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaibhav123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_sync_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-06T14:32:35.984Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b6d46cd08eb4133f3b20b29"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raju.c"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raju.c26"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raju.c@pickcel.com"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"default_composition_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b922696bc5c8f1af4833c8f"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Composition"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"active_schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60cc208705b1f0c0f3091878"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S - 18-Jun-2021 09:55:04"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"compositions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60cc208705b1f0c0f3091879"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"composition_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60c9a466a95bf0724ba4abfd"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"start_date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-18T04:25:00.000Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"end_date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-18T04:29:00.000Z"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-06T12:43:59.666Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"play_now_composition_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62bd5c1362c12a8b06590567"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Play - 30-Jun-2022 13:47:19"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"is_online"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Testing"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wyyeqiywqoywywoyeoyewoyeqoqwye"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"neon"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fjfhjhfhfhfhhhhf"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wqyyqwiyqeyqywiiuqwuueyyquyeyu"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaibhav123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"profile_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63aaae297e7e3fed4d6285da"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific kitten.</p>
+
+<!-- <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside> -->
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://signage.pickcel.com/api/v4/client/screens/getScreen/screenId/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>randomScreenId</td>
+<td>The ID of the screen to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='media'>Media</h1><h2 id='get-media-list'>Get media list</h2>
+<blockquote>
+<p>The api returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully fetched documents"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"medias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b92154bbc5c8f1af4833c68"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b6d46cd08eb4133f3b20b29/5b92154bbc5c8f1af4833c68.jpeg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1920*1280"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"video_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"143232"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d2juedknhp61ae.cloudfront.net/5b6d46cd08eb4133f3b20b29/5b92154bbc5c8f1af4833c68.jpeg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://signage.pickcel.com//media/5b6d46cd08eb4133f3b20b29/images/5b92154bbc5c8f1af4833c68_preview.jpeg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asset_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Image"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"app_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T06:06:03.715Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-07T06:06:03.715Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1ca3986ef0e424e362c6d4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"V"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b6d46cd08eb4133f3b20b29/Pickcel Cloud based Digital Signage.mp4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1280*720"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"video_duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9667406"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d2juedknhp61ae.cloudfront.net/5b6d46cd08eb4133f3b20b29/5c1ca3986ef0e424e362c6d4.mp4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d2juedknhp61ae.cloudfront.net/5b6d46cd08eb4133f3b20b29/5c1ca3986ef0e424e362c6d4-00002.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asset_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"app_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asset_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-21T08:26:00.336Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-21T08:26:00.336Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5646</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all media.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://signage.pickcel.com/api/v4/client/media/list?asset_type=all&amp;page=3&amp;limit=10&amp;sort_by=modified_date&amp;order=asc</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>page number, start with 0 being first page</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>N.A.</td>
+<td>number of results returned per page, value should be greater than 1 and less than 30</td>
+</tr>
+<tr>
+<td>sort_by</td>
+<td>N.A.</td>
+<td>defines the field which needs to be sorted by</td>
+</tr>
+<tr>
+<td>order</td>
+<td>dsc</td>
+<td>defines how sorting has to be done, values can be either asc [ascending] or dsc [descending]. If not passed descending will be default</td>
+</tr>
+<tr>
+<td>asset_type</td>
+<td>all</td>
+<td>asset type - image/video/pdf/apps</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
+  Remember — a happy kitten is an authenticated kitten!
+</aside> -->
+<h1 id='compsition'>Compsition</h1><h2 id='get-coposition-list'>Get coposition list</h2>
+<blockquote>
+<p>The api returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully fetched documents"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"compositions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fdc5116aa6e59420ebb0395"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C - 18-Dec-20 12:19"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dcz05r8fsmg3q.cloudfront.net/5b6d46cd08eb4133f3b20b29/compositions/5fdc5116aa6e59420ebb0395-87.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"screen_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5fdc5cc0aa6e59420ebb03a1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C - 18-Dec-20 13:09"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"preview_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dcz05r8fsmg3q.cloudfront.net/5b6d46cd08eb4133f3b20b29/compositions/5fdc5cc0aa6e59420ebb03a1-8551.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"screen_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horizontal"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3085</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all composition.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://signage.pickcel.com/api/v4/client/compositions/getCompositions?page=3&amp;limit=10&amp;sort_by=first_name&amp;order=asc</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>page number, start with 0 being first page</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>N.A.</td>
+<td>number of results returned per page, value should be greater than 1 and less than 30</td>
+</tr>
+<tr>
+<td>sort_by</td>
+<td>N.A.</td>
+<td>defines the field which needs to be sorted by</td>
+</tr>
+<tr>
+<td>order</td>
+<td>dsc</td>
+<td>defines how sorting has to be done, values can be either asc [ascending] or dsc [descending]. If not passed descending will be default</td>
+</tr>
+</tbody></table>
+
+<!-- <aside class="success">
+  Remember — a happy kitten is an authenticated kitten!
+</aside> -->
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="nodejs">nodejs</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
