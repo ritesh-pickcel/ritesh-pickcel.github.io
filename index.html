@@ -363,17 +363,15 @@
 
 <p>The API documentation is comprehensive and user-friendly, making it easy for developers to understand and implement..</p>
 <h1 id='authentication'>Authentication</h1>
-<p>To use bearer token authorization for an API, follow these steps:</p>
+<p>Here&#39;s a basic overview of how to implement bearer token authorization in the frontend :</p>
 
-<p>Obtain an access token from the API provider. This is typically done by sending a request to an authentication endpoint with the necessary credentials, such as a username and password.</p>
+<p>1.The client (frontend) sends a login request to the API with the user&#39;s credentials.</p>
 
-<p>Include the access token in the &quot;Authorization&quot; header of your API requests. The header value should be set to &quot;Bearer [token]&quot; where [token] is the actual access token.</p>
+<p>2.The API verifies the credentials and, if they are valid, returns a bearer token to the client.</p>
 
-<p>Send your API request as normal, including the &quot;Authorization&quot; header with the bearer token.</p>
+<p>3.The client includes the bearer token in subsequent API requests as a bearer token in the Authorization header, with the format: &quot;Authorization: Bearer <token>&quot;</p>
 
-<p>The API server will receive the request and check the token in the &quot;Authorization&quot; header to determine if the client is authorized to access the requested resource.</p>
-
-<p>If the token is valid and the client is authorized, the API will return the requested data. If the token is invalid or the client is not authorized, the API will return an error.</p>
+<p>4.The API verifies the token and returns the requested data if the token is valid.</p>
 
 <p>Example header for an API request using bearer token authorization:</p>
 
