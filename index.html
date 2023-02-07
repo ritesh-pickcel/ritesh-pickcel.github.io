@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the Kittn API"
+            content="Documentation for the Pickcel Signage Solutions API"
         >
     <title>API Reference</title>
 
@@ -287,7 +287,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-d5e7f32e.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-f1143b61.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-b12a2749.js"></script>
 
@@ -296,7 +296,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;nodejs&quot;]">
+  <body class="index" data-languages="[&quot;examples&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -308,7 +308,7 @@
       <img src="images/logo-9edbd576.svg" class="logo" alt="" />
     </div>
         <div class="lang-selector">
-              <a href="#" data-language-name="nodejs">nodejs</a>
+              <a href="#" data-language-name="examples">examples</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -357,30 +357,47 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Pickcel Signage Solutions API! This documentation provides detailed information on how to integrate Pickcel&#39;s digital signage platform into your own systems. </p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>The API enables developers to build custom solutions for displaying real-time content on digital displays. It covers all aspects of the platform, including content management, scheduling, and reporting.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>The API documentation is comprehensive and user-friendly, making it easy for developers to understand and implement..</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
+<p>To use bearer token authorization for an API, follow these steps:</p>
 
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>Obtain an access token from the API provider. This is typically done by sending a request to an authentication endpoint with the necessary credentials, such as a username and password.</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Include the access token in the &quot;Authorization&quot; header of your API requests. The header value should be set to &quot;Bearer [token]&quot; where [token] is the actual access token.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Send your API request as normal, including the &quot;Authorization&quot; header with the bearer token.</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>The API server will receive the request and check the token in the &quot;Authorization&quot; header to determine if the client is authorized to access the requested resource.</p>
+
+<p>If the token is valid and the client is authorized, the API will return the requested data. If the token is invalid or the client is not authorized, the API will return an error.</p>
+
+<p>Example header for an API request using bearer token authorization:</p>
+
+<p>Authorization: Bearer abcdefghijklmnopqrstuvwxyz123456</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>abcdefghijklmnopqrstuvwxyz123456</code> with your personal API key.
 </aside>
-<h1 id='screen'>Screen</h1><h2 id='get-screen-list'>Get screen list</h2>
+<h1 id='screen'>Screen</h1><h2 id='get-screen-list'>Get screen list</h2><div class="highlight"><pre class="highlight plaintext"><code>import axios from 'axios';
+
+const headers = {
+    'Authorization': 'Bearer ' + token
+};
+
+axios.get('https://signage.pickcel.com/api/v4/client/screens/list?page=0&amp;limit=2&amp;sort_by=first_name&amp;order=asc', { headers: headers })
+.then(response =&gt; {
+    console.log(response.data);
+})
+.catch(error =&gt; {
+    console.error(error);
+});
+</code></pre></div>
 <blockquote>
-<p>The api returns JSON structured like this:</p>
+<p>The above api returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully fetched documents"</span><span class="p">,</span><span class="w">
@@ -394,30 +411,34 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
                 </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"full_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"google_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout, Bengaluru, Karnataka, India"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"560087"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"geocode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9121181</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.6445548</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pi_V4_2GB_Pickcel"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"menu-screen"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"last_sync_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-18T07:58:11.293Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60c99ebea95bf0724ba4abb2"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John deo"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-16T06:48:30.727Z"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abhishek Ramesh"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abhishek.ramesh72"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abhishek.ramesh@pickcel.com"</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John deo"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndeo@examplecom"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-09T13:52:24.053Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-09T13:52:24.053Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"is_online"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"break-fast"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"dinner"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="nl">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000a93fd0db"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"profile_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="nl">"profile_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXX"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"611e38a215047d0509632a5c"</span><span class="p">,</span><span class="w">
@@ -427,29 +448,33 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
                 </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"full_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"google_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HSR Layout, Bengaluru, Karnataka, India"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pincode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"560087"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"geocode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.9121181</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="mf">77.6445548</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Display - eJ8y8t"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shooping-mall"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"last_sync_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19T12:30:28.566Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57b598e787895d651b5477cd"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60c99ebea95bf0724ba4abb2"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-18T11:15:51.604Z"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John deo"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-16T06:48:30.727Z"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact@pickcel.com"</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John deo"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndeo@examplecom"</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19T10:55:30.338Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19T10:55:30.338Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-09T13:52:24.053Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"modified_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-09T13:52:24.053Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"is_online"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-            </span><span class="nl">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ba7e8ce0c1a1356d"</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"deals"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fashion"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ba7e8ce0c1a1356d"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"profile_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYYYY"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8570</span><span class="p">,</span><span class="w">
@@ -745,7 +770,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="nodejs">nodejs</a>
+                <a href="#" data-language-name="examples">examples</a>
           </div>
       </div>
     </div>
